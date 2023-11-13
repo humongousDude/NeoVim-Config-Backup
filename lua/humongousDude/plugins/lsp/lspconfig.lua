@@ -51,8 +51,6 @@ return {
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
-
-			-- used to enable autocompletion
 		end
 	end,
 }
