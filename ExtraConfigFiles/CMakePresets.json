@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "debug",
+            "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
+            "environment": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }        
+
+        }
+    ]
+}
