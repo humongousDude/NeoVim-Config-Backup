@@ -5,9 +5,9 @@
             "name": "debug",
             "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
             "environment": {
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
-            }        
-
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "-DCMAKE_CXX_COMPILER": "clang"
+            }
         }
     ]
 }

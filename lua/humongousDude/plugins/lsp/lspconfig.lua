@@ -9,11 +9,41 @@ return {
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-		local keymap = vim.keymap
+
+        local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+        for type, icon in pairs(signs) do
+            local hl = "DiagnosticSign" .. type
+            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        end
+
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+            callback = function ()
+                vim.diagnostic.open_float(nil, {focus=false})
+            end
+        })
 
 		local opts = { noremap = true, silent = true }
-		local on_attach = function(client, bufnr)
+        local on_attach = function(client, bufnr)
+
+            vim.api.nvim_create_autocmd("CursorHold", {
+                buffer = bufnr,
+                callback = function()
+                    local opts = {
+                        focusable = false,
+                        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                        border = 'rounded',
+                        source = 'always',
+                        prefix = ' ',
+                        scope = 'cursor',
+                    }
+                    vim.diagnostic.open_float(nil, opts)
+                end
+            })
+
 			opts.buffer = bufnr
+
+		    local keymap = vim.keymap
 
 			-- set keybinds
 			opts.desc = "Show LSP references"
