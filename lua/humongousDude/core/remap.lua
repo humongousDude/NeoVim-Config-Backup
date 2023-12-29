@@ -7,7 +7,11 @@ keymap.set("i", "<C-k>", "<Up>")
 keymap.set("i", "<C-h>", "<Left>")
 keymap.set("i", "<C-l>", "<Right>")
 
-keymap.set("i", "jk", "<Esc>")
+keymap.set("i", "hj", "<Esc>")
+
+keymap.set("n", "gd", ":Telescope lsp_definitions<CR>")
+keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
+keymap.set("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>")
 
 keymap.set("n", "<leader>dr", ":DapContinue<CR>")
 keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>")
@@ -61,9 +65,3 @@ keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
-keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
-
-keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
