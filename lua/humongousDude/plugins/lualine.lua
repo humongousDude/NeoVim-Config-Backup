@@ -1,4 +1,4 @@
-return{
+--[[return{
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -68,4 +68,12 @@ return{
             },
         })
     end,
+}--]]
+-- old lualine just in case
+return{
+    "vim-airline/vim-airline",
+    dependencies = {
+        "vim-airline/vim-airline-themes"
+    },
+    config = function() vim.cmd "AirlineTheme gruvbox" end
 }
