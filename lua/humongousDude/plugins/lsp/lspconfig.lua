@@ -31,7 +31,7 @@ return {
                 callback = function()
                     local opts = {
                         focusable = false,
-                        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                        close_events = { "BufLeave", "InsertEnter", "FocusLost" },
                         border = 'rounded',
                         source = 'always',
                         prefix = ' ',

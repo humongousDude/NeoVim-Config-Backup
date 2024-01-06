@@ -3,10 +3,26 @@
     "configurePresets": [
         {
             "name": "debug",
+            "generator": "Ninja",
             "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
-            "environment": {
+            "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "-DCMAKE_CXX_COMPILER": "clang"
+                "CMAKE_COLOR_DIAGNOSTICS": "ON",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "clang++"
+            }
+        },
+        {
+            "name": "release",
+            "generator": "Ninja",
+            "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "OFF",
+                "CMAKE_COLOR_DIAGNOSTICS": "OFF"
             }
         }
     ]
