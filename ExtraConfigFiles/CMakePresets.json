@@ -1,26 +1,58 @@
 {
-    "version": 3,
+    "version": 7,
     "configurePresets": [
         {
-            "name": "debug",
+            "name": "debug-msvc",
+            "binaryDir": "${sourceDir}/build",
             "generator": "Ninja",
             "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_COLOR_DIAGNOSTICS": "ON",
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_C_COMPILER": "gcc",
+                "VCPKG_TARGET_TRIPLET": "x64-windows-static",
+                "CMAKE_C_COMPILER": "clang",
                 "CMAKE_CXX_COMPILER": "clang++"
             }
         },
         {
-            "name": "release",
+            "name": "debug-mingw",
+            "binaryDir": "${sourceDir}/build",
+            "generator": "Ninja",
+            "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_COLOR_DIAGNOSTICS": "ON",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++"
+            }
+        },
+        {
+            "name": "release-mingw",
+            "binaryDir": "${sourceDir}/build-release",
             "generator": "Ninja",
             "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
+                "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "OFF",
+                "CMAKE_COLOR_DIAGNOSTICS": "OFF"
+            }
+        },
+        {
+            "name": "release-msvc",
+            "binaryDir": "${sourceDir}/build-release",
+            "generator": "Ninja",
+            "toolchainFile": "$env{vcpkg_root}/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "VCPKG_TARGET_TRIPLET": "x64-windows-static",
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "OFF",
                 "CMAKE_COLOR_DIAGNOSTICS": "OFF"
             }
