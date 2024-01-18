@@ -41,7 +41,6 @@ return {
 				{ name = "nvim_lsp" }, -- lsp
                 { name = 'nvim_lsp_signature_help' }, -- function signature helper
 				{ name = "luasnip" }, -- snippets
-				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- system file paths
 			}),
 			-- configure lspkind for vs-code like icons
