@@ -31,7 +31,7 @@ return {
 
 		local format_augroup = vim.api.nvim_create_augroup("format", { clear = true })
 
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 			group = format_augroup,
 			callback = function()
 				conform.format({
