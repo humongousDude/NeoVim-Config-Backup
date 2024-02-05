@@ -16,12 +16,10 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
 
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-            group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
-            callback = function ()
-                vim.diagnostic.open_float(nil, {focus=false})
-            end
-        })
+        vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
+        vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev)
+
+        vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
 
 		local opts = { noremap = true, silent = true }
         local on_attach = function(client, bufnr)

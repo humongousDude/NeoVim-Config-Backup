@@ -30,6 +30,6 @@ return{
         keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
         keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>")
         keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>")
-        keymap.set("n", "<leader>fc", "<cmd>telescope grep_string<CR>")
+        keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>")
     end,
 }

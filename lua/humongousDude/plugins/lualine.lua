@@ -75,5 +75,5 @@ return{
     dependencies = {
         "vim-airline/vim-airline-themes"
     },
-    config = function() vim.cmd "AirlineTheme gruvbox" end
+    config = function() vim.cmd "AirlineTheme base16_gruvbox_dark_medium" end
 }

@@ -1,6 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
+	event = "BufReadPost",
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffers
 		"hrsh7th/cmp-path", -- source for file system paths
@@ -8,7 +8,6 @@ return {
         "L3MON4D3/LuaSnip", -- snippet engine
         "saadparwaiz1/cmp_luasnip", -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
-        "hrsh7th/cmp-nvim-lsp-signature-help", -- function signature highlights
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -27,6 +26,17 @@ return {
 					luasnip.lsp_expand(args.body)
 				end,
 			},
+            window = { 
+                completion = cmp.config.window.bordered({
+                    scrollbar = false,
+                }),
+                documentation = cmp.config.window.bordered({
+                    winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+                    scrollbar = false,
+                    side_padding = 0,
+                    col_offset = 0,
+                }),
+            },
 			mapping = cmp.mapping.preset.insert({
 				["<C-k>"] = cmp.mapping.select_prev_item(),
 				["<C-j>"] = cmp.mapping.select_next_item(),
@@ -39,7 +49,6 @@ return {
 			-- sources for autocompletetion
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" }, -- lsp
-                { name = 'nvim_lsp_signature_help' }, -- function signature helper
 				{ name = "luasnip" }, -- snippets
 				{ name = "path" }, -- system file paths
 			}),
