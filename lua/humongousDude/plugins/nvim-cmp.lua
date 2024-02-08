@@ -51,6 +51,7 @@ return {
 				{ name = "nvim_lsp" }, -- lsp
 				{ name = "luasnip" }, -- snippets
 				{ name = "path" }, -- system file paths
+                {name = "glsl_analyzer"},
 			}),
 			-- configure lspkind for vs-code like icons
 			formatting = {

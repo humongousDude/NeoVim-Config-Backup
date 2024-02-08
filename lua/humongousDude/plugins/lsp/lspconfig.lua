@@ -9,6 +9,7 @@ return {
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+        require'lspconfig'.glsl_analyzer.setup{}
 
         local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
         for type, icon in pairs(signs) do
@@ -22,7 +23,7 @@ return {
         vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
 
 		local opts = { noremap = true, silent = true }
-        local on_attach = function(client, bufnr)
+        local on_attach = function(client, bufnr, sig)
 
             vim.api.nvim_create_autocmd("CursorHold", {
                 buffer = bufnr,
@@ -50,13 +51,13 @@ return {
 			opts.desc = "Go to declaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-			opts.desc = "Show lsp defenitions"
+			opts.desc = "Show lsp definitions"
 			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions", opts)
 
 			opts.desc = "Show lsp implementations"
 			keymap.set("n", "gi", "<cmd>Telescope lsp_implementation", opts)
 
-			opts.desc = "Show lsp  type defenitions"
+			opts.desc = "Show lsp  type definitions"
 			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions", opts)
 
 			opts.desc = "See available code actions"
@@ -67,12 +68,6 @@ return {
 
 			opts.desc = "Show buffer diagnostics"
 			keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-			opts.desc = "Go to previous diagnostic"
-			keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-			opts.desc = "Go to next diagnostic"
-			keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 			opts.desc = "Show documentation for under cursor"
 			keymap.set("n", "K", vim.lsp.buf.hover, opts)
