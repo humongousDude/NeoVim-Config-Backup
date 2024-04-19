@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 vim.opt.guicursor = ""
 vim.opt.nu = true;
 vim.opt.relativenumber = true;
@@ -10,7 +11,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.showmode = false
-vim.opt.clipboard= "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.wrap = false
 
@@ -30,5 +31,11 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 750
 vim.opt.colorcolumn = "181"
-vim.g.mapleader = " "
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight on yank",
+    group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end
+})

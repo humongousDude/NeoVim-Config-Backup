@@ -9,7 +9,7 @@ return {
         local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-        require'lspconfig'.glsl_analyzer.setup{}
+        require 'lspconfig'.glsl_analyzer.setup {}
 
         local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
         for type, icon in pairs(signs) do
@@ -17,14 +17,13 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
 
-        vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
-        vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev)
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 
         vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
 
         local opts = { noremap = true, silent = true }
         local on_attach = function(client, bufnr, sig)
-
             vim.api.nvim_create_autocmd("CursorHold", {
                 buffer = bufnr,
                 callback = function()

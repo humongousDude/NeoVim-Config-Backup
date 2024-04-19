@@ -70,10 +70,10 @@
     end,
 }--]]
 -- old lualine just in case
-return{
+return {
     "vim-airline/vim-airline",
     dependencies = {
         "vim-airline/vim-airline-themes"
     },
-    config = function() vim.cmd "AirlineTheme base16_gruvbox_dark_medium" end
+    config = function() vim.cmd "AirlineTheme base16_black_metal_immortal" end
 }
