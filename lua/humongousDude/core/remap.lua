@@ -22,9 +22,9 @@ keymap.set("n", "<C-h>", "<C-w>h")
 keymap.set("n", "<C-l>", "<C-w>l")
 keymap.set("n", "<C-k>", "<C-w>k")
 
-keymap.set("n", "<Tab>", "<cmd>bnext<CR>zz")
-keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>zz")
-keymap.set("n", "<leader>x", "<cmd>bdelete<CR>zz")
+-- keymap.set("n", "<Tab>", "<cmd>bnext<CR>zz")
+-- keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>zz")
+-- keymap.set("n", "<leader>x", "<cmd>bdelete<CR>zz")
 
 keymap.set("n", "J", "mzJ`z")
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -44,4 +44,3 @@ keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
