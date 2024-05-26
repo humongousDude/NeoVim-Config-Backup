@@ -1,13 +1,13 @@
-return 
+return
 {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     event = { "VeryLazy" },
     config = function()
-        require'nvim-treesitter.configs'.setup {
+        require 'nvim-treesitter.configs'.setup {
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
-            ensure_installed = {"cpp", "c", "lua", "vim", "vimdoc", "query"},
+            ensure_installed = { "cpp", "c", "lua" },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
@@ -24,10 +24,10 @@ return
 
             highlight = {
                 enable = true,
-           },
+            },
         }
 
-        require'nvim-treesitter.install'.compilers = { "clang" , "gcc"}
-        require'nvim-treesitter.install'.prefer_git = false
+        require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
+        require 'nvim-treesitter.install'.prefer_git = false
     end
-} 
+}

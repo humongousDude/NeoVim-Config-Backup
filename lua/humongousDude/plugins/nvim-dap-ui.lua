@@ -1,4 +1,4 @@
-return{
+return {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
     dependencies = {
@@ -12,7 +12,6 @@ return{
         local virtualText = require("nvim-dap-virtual-text")
 
         virtualText.setup()
-
         dapui.setup()
         dap.listeners.after.event_initialized["dapui_config"] = function()
             dapui.open()

@@ -4,12 +4,16 @@ return {
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
+        "folke/neodev.nvim"
     },
     config = function()
         local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-        require 'lspconfig'.glsl_analyzer.setup {}
+        -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+        require("neodev").setup({
+            -- add any options here, or leave empty to use the default settings
+        })
 
         local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
         for type, icon in pairs(signs) do
@@ -35,12 +39,13 @@ return {
                         prefix = ' ',
                         scope = 'cursor',
                     }
+
                     vim.diagnostic.open_float(nil, opts)
+                    require "lsp_signature".on_attach(signature_setup, bufnr)
                 end
             })
 
             opts.buffer = bufnr
-
             local keymap = vim.keymap
 
             -- set keybinds
